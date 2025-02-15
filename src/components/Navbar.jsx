@@ -1,11 +1,15 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
+  const allusers = useSelector((state)=> state.app.users)
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link to="/" className="navbar-brand">
             NAV
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -20,14 +24,14 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link to="/" className="nav-link ">
                   Create Post
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  All Post
-                </a>
+                <Link to="/read" className="nav-link">
+                  All Post ({allusers.length})
+                </Link>
               </li>
             </ul>
             <form className="d-flex w-50" role="search">
